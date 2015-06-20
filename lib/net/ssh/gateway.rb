@@ -99,7 +99,6 @@ class Net::SSH::Gateway
 
     @active = false
 
-    @thread.join
     @session.close
   end
 
