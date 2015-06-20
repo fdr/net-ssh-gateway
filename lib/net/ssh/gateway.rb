@@ -194,10 +194,17 @@ class Net::SSH::Gateway
 
       @thread = Thread.new do
         while @active
-          @session_mutex.synchronize do
-            @session.process(@loop_wait)
+          begin
+            @session_mutex.synchronize do
+              @session.process(@loop_wait)
+            end
+            Thread.pass
+          rescue Exception => e
+            puts 'GATEWAY THREAD SWALLOWING' +
+              "\nError during processing: #{$!}" +
+              "Backtrace:\n\t#{e.backtrace.join("\n\t")}"
+            @active = false
           end
-          Thread.pass
         end
       end
     end
