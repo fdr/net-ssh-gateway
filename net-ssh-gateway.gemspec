@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubyforge_project = "net-ssh-gateway"
   s.rubygems_version = "1.8.25"
-  s.signing_key = "/mnt/gem/gem-private_key.pem"
   s.summary = "A simple library to assist in establishing tunneled Net::SSH connections"
 
   if s.respond_to? :specification_version then
